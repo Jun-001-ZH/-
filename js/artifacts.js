@@ -58,7 +58,7 @@
     if (!root) return;
     root.innerHTML = data.artifacts.filter((item) => item.featured).slice(0, 4).map((item, index) => `
       <article class="featured-artifact reveal reveal-up" data-artifact-id="${item.id}" data-cursor-text="寻色">
-        <img src="${item.image}" alt="${item.imageAlt}" loading="${index === 0 ? "eager" : "lazy"}">
+        <img src="${item.image}" alt="${item.imageAlt}" loading="${index === 0 ? "eager" : "lazy"}" decoding="async" fetchpriority="${index === 0 ? "high" : "auto"}">
         <div class="featured-artifact__caption">
           <small>${String(index + 1).padStart(2, "0")} · ${categoryName(item.category).toUpperCase()}</small>
           <strong>${item.name}</strong>
@@ -100,7 +100,7 @@
           </div>
           <div class="zone-hero reveal reveal-up">
             <figure class="zone-hero__image" data-cursor-text="${cat.id === "costume" ? "观纹" : "观器"}">
-              <img src="${zoneImage}" alt="${zoneImageAlt}" loading="lazy">
+              <img src="${zoneImage}" alt="${zoneImageAlt}" loading="lazy" decoding="async">
               ${pointsHtml(zoneColors)}
               ${cat.id === "painting" ? '<span class="painting-reveal" aria-hidden="true"></span>' : ""}
             </figure>
@@ -132,7 +132,7 @@
   function cardHtml(item) {
     return `
       <article class="artifact-card reveal reveal-up" tabindex="0" data-artifact-id="${item.id}" data-cursor-text="寻色">
-        <img src="${item.image}" alt="${item.imageAlt}" loading="lazy">
+        <img src="${item.image}" alt="${item.imageAlt}" loading="lazy" decoding="async">
         <div class="artifact-card__caption">
           <strong>${item.name}</strong>
           <small>${item.dynasty} · ${categoryName(item.category)}</small>

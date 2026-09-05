@@ -479,7 +479,7 @@
 
   function collectColor(color, button) {
     const collection = readCollection();
-    if (!collection.some((item) => item.colorId === color.id)) {
+    if (!collection.some((item) => isArchivePick(item) && item.colorId === color.id)) {
       collection.push({ key: `archive:${color.id}`, colorId: color.id, name: color.name, hex: color.hex, rgb: color.rgb, sourceType: "archive", sourceName: color.source, hall: "拾色藏库" });
       saveCollection(collection);
     }
@@ -496,7 +496,7 @@
   function renderPicked() {
     const root = document.querySelector("[data-picked]");
     if (!root) return;
-    const collection = hydrateCollection(readCollection());
+    const collection = archiveCollection();
     if (!collection.length) {
       root.innerHTML = `<div class="picked-empty"><p>你的拾色篮还是空的。<br>去色彩藏目中收入一抹喜欢的颜色，它会被带回这里。</p><nav><button type="button" data-scroll-collection>去拾色 →</button></nav></div>`;
       root.querySelector("[data-scroll-collection]")?.addEventListener("click", () => {
@@ -539,6 +539,14 @@
       const color = item.colorId ? findColor(item.colorId) : colors.find((entry) => entry.hex.toLowerCase() === item.hex?.toLowerCase());
       return color ? { ...item, colorId: color.id, name: color.name, hex: color.hex, rgb: color.rgb } : item;
     }).filter((item) => item.hex && item.name);
+  }
+
+  function archiveCollection() {
+    return hydrateCollection(readCollection()).filter(isArchivePick);
+  }
+
+  function isArchivePick(item) {
+    return item.hall === "拾色藏库" || item.sourceType === "archive" || item.key?.startsWith("archive:");
   }
 
   function renderClassicPalettes() {
@@ -624,7 +632,7 @@
   }
 
   function composerIdsFromCollection() {
-    const ids = hydrateCollection(readCollection())
+    const ids = archiveCollection()
       .map((item) => item.colorId || colors.find((color) => color.hex.toLowerCase() === item.hex?.toLowerCase())?.id)
       .filter(Boolean);
     return unique(ids).slice(0, 5);
@@ -677,7 +685,7 @@
     picker.querySelectorAll("[data-picker-tab]").forEach((button) => {
       button.setAttribute("aria-selected", String(button.dataset.pickerTab === state.pickerTab));
     });
-    const picked = hydrateCollection(readCollection()).map((item) => findColor(item.colorId)).filter(Boolean);
+    const picked = archiveCollection().map((item) => findColor(item.colorId)).filter(Boolean);
     const source = state.pickerTab === "picked" ? uniqueById(picked) : colors;
     if (!source.length) {
       panel.innerHTML = `<p class="composer-picker__empty">我的拾色中还没有颜色，可先在色彩藏目里打开色档并收入拾色篮。</p>`;
@@ -806,7 +814,8 @@
       readJson(key, []).forEach((item) => {
         const legacyKey = item.key || `${key}:${item.name}:${item.hex}`;
         if (!current.some((entry) => entry.key === legacyKey)) {
-          current.push({ key: legacyKey, colorId: item.colorId || item.id, name: item.name, hex: item.hex, rgb: item.rgb, sourceType: "legacy", sourceName: item.artifactName || item.sourceName, hall: item.hall || "物色生香" });
+          const isArchiveLegacy = key === "ccm-archive-colors";
+          current.push({ key: legacyKey, colorId: item.colorId || item.id, name: item.name, hex: item.hex, rgb: item.rgb, sourceType: isArchiveLegacy ? "archive" : "legacy", sourceName: item.artifactName || item.sourceName, hall: item.hall || (isArchiveLegacy ? "拾色藏库" : "物色生香") });
         }
       });
     });
@@ -819,7 +828,7 @@
   }
 
   function isCollected(id) {
-    return readCollection().some((item) => item.colorId === id || findColor(id)?.hex.toLowerCase() === item.hex?.toLowerCase());
+    return archiveCollection().some((item) => item.colorId === id || findColor(id)?.hex.toLowerCase() === item.hex?.toLowerCase());
   }
 
   async function copyValue(value, button) {

@@ -29749,7 +29749,7 @@ function cE() {
   const T = window.SolarTermsData || [];
   T.length && zS(".hero-spectrum", rE, {
     images: T.map((q) => ({
-      image: `../assets/seasons/${q.id}.png`,
+      image: `../assets/seasons/${q.id}.jpg`,
       link: `#term-${q.id}`
     })),
     branches: 24,

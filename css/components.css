@@ -158,7 +158,11 @@
   overflow: hidden;
   isolation: isolate;
   color: var(--warm-white);
-  background: #101820;
+  background:
+    radial-gradient(ellipse 58% 46% at 48% 44%, rgba(85, 118, 111, 0.4), transparent 64%),
+    radial-gradient(ellipse 48% 42% at 66% 62%, rgba(168, 74, 63, 0.22), transparent 68%),
+    radial-gradient(ellipse 64% 38% at 38% 76%, rgba(197, 163, 90, 0.18), transparent 72%),
+    linear-gradient(135deg, #101820 0%, #182520 46%, #211c19 100%);
 }
 
 .hero-video {
@@ -169,6 +173,12 @@
   height: 100%;
   object-fit: cover;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 900ms var(--ease-out);
+}
+
+.hero-video.is-ready {
+  opacity: 1;
 }
 
 .hero-section::before {
@@ -1231,14 +1241,115 @@ blockquote cite {
   position: fixed;
   inset: 0;
   z-index: 300;
+  display: grid;
+  place-items: center;
   pointer-events: none;
-  background: var(--transition-color, #55766f);
+  overflow: hidden;
+  color: rgba(244, 240, 232, 0.86);
+  background:
+    radial-gradient(circle at var(--click-x, 50%) var(--click-y, 50%), rgba(244, 240, 232, 0.16), transparent 30%),
+    radial-gradient(ellipse 74% 56% at 50% 50%, color-mix(in srgb, var(--transition-color, #55766f) 76%, #f4f0e8), transparent 72%),
+    var(--transition-color, #55766f);
   clip-path: circle(0% at var(--click-x, 50%) var(--click-y, 50%));
-  transition: clip-path 650ms var(--ease-out);
+  opacity: 0;
+  transition: clip-path 620ms var(--ease-out), opacity 180ms ease-out;
+}
+
+#page-transition::before,
+#page-transition::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+#page-transition::before {
+  content: "入展中 · " attr(data-hall);
+  left: 50%;
+  top: 50%;
+  width: min(76vw, 420px);
+  padding-top: 86px;
+  color: currentColor;
+  font: 13px/1.6 var(--sans);
+  letter-spacing: 0.22em;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translate(-50%, calc(-50% + 18px));
+}
+
+#page-transition::after {
+  left: 50%;
+  top: 50%;
+  width: 68px;
+  height: 68px;
+  border: 1px solid rgba(244, 240, 232, 0.2);
+  border-top-color: rgba(244, 240, 232, 0.82);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+#page-transition.is-entering {
+  opacity: 1;
+  animation: hallCurtainEnter 780ms var(--ease-out) both;
 }
 
 #page-transition.is-active {
+  opacity: 1;
   clip-path: circle(150% at var(--click-x, 50%) var(--click-y, 50%));
+}
+
+#page-transition.is-loading::before {
+  animation: hallLoadingText 520ms var(--ease-out) 260ms both;
+}
+
+#page-transition.is-loading::after {
+  animation: hallLoadingRing 860ms linear 220ms infinite;
+}
+
+.js body {
+  transition: opacity 260ms ease-out, filter 260ms ease-out, transform 420ms var(--ease-out);
+}
+
+.js body.is-page-exiting {
+  opacity: 0.92;
+  filter: saturate(0.82);
+  transform: scale(0.992);
+}
+
+@keyframes hallCurtainEnter {
+  0% {
+    clip-path: circle(150% at 50% 50%);
+  }
+  68% {
+    opacity: 1;
+  }
+  100% {
+    clip-path: circle(0% at 50% 50%);
+    opacity: 0;
+  }
+}
+
+@keyframes hallLoadingText {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 22px));
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, calc(-50% + 12px));
+  }
+}
+
+@keyframes hallLoadingRing {
+  0% {
+    opacity: 0.88;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.94);
+  }
+  100% {
+    opacity: 0.88;
+    transform: translate(-50%, -50%) rotate(360deg) scale(0.94);
+  }
 }
 
 .cursor-dot,

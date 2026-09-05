@@ -81,7 +81,7 @@
       return `
         <article class="solar-term ${sideClass} ${leftClass} ${seasonStart ? "is-season-start" : ""}" id="term-${term.id}" data-term-id="${term.id}" data-season-mark="${seasonStart ? term.seasonName : ""}" style="--term-color:${term.representativeColor.hex}">
           <figure class="solar-term__background" aria-hidden="true">
-            <img src="../assets/seasons/${term.id}.png" alt="" loading="lazy">
+            <img src="../assets/seasons/${term.id}.jpg" alt="" loading="${term.index === 1 ? "eager" : "lazy"}" decoding="async" fetchpriority="${term.index === 1 ? "high" : "auto"}">
           </figure>
           <div class="solar-term__marker"></div>
           <div class="solar-term__content">

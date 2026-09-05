@@ -8,6 +8,16 @@ function initHeroIntro() {
   if (heroVideo && heroState.reducedMotion) {
     heroVideo.removeAttribute("autoplay");
     heroVideo.pause();
+  } else if (heroVideo) {
+    window.setTimeout(() => {
+      heroVideo.load();
+      heroVideo.play().catch(() => {});
+      heroVideo.classList.add("is-loading");
+      heroVideo.addEventListener("canplay", () => {
+        heroVideo.classList.remove("is-loading");
+        heroVideo.classList.add("is-ready");
+      }, { once: true });
+    }, 900);
   }
   window.heroState = heroState;
   window.setTimeout(() => {

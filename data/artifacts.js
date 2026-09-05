@@ -8,7 +8,7 @@ window.ArtifactMuseumData = {
       english: "COLORS OF CERAMICS",
       line: "火与釉之间，颜色从不完全由人掌控。",
       material: "釉中见天光",
-      image: "../assets/artifacts/ceramic-zone-vessel.png",
+      image: "../assets/artifacts/ceramic-zone-vessel.jpg",
       alt: "青瓷铺首耳罐局部图，器身呈温润青灰釉色",
       palette: ["#6E8B8B", "#D6D2C3", "#8EA58B", "#AAB8AF"]
     },
@@ -20,7 +20,7 @@ window.ArtifactMuseumData = {
       english: "COLORS OF COSTUME",
       line: "色入衣冠，便进入身份、礼仪与日常生活。",
       material: "衣冠有色",
-      image: "../assets/artifacts/costume-zone-brocade.png",
+      image: "../assets/artifacts/costume-zone-brocade.jpg",
       alt: "绛红织锦局部图，花鸟纹中可见金线、青蓝叶纹与暗红织地",
       palette: ["#7A3436", "#9E4F4F", "#B19A61", "#3F5961"]
     },
@@ -32,7 +32,7 @@ window.ArtifactMuseumData = {
       english: "COLORS OF PAINTING",
       line: "一笔石青，一层石绿，山河便有了颜色。",
       material: "丹青入纸",
-      image: "../assets/artifacts/painting-zone-landscape.png",
+      image: "../assets/artifacts/painting-zone-landscape.jpg",
       alt: "青绿山水局部图，可见石青石绿山石与纸绢肌理",
       palette: ["#4F7586", "#66846A", "#9C6A49", "#343735"]
     },
@@ -44,7 +44,7 @@ window.ArtifactMuseumData = {
       english: "COLORS OF ARCHITECTURE",
       line: "颜色落在空间之上，便成为秩序的一部分。",
       material: "宫墙瓦宇",
-      image: "../assets/artifacts/architecture-zone-palace-wall.png",
+      image: "../assets/artifacts/architecture-zone-palace-wall.jpg",
       alt: "宫墙与琉璃瓦建筑局部图，包含朱红墙面、琉璃黄瓦和石基",
       palette: ["#963C34", "#C58B35", "#2F4C40", "#D8D0BE"]
     }
@@ -57,14 +57,14 @@ window.ArtifactMuseumData = {
       category: "ceramic",
       material: "瓷胎、青釉",
       technique: "釉色、火候、窑变",
-      zoneImage: "../assets/artifacts/ceramic-zone-vessel.png",
+      zoneImage: "../assets/artifacts/ceramic-zone-vessel.jpg",
       zoneImageAlt: "青瓷铺首耳罐图，器身有温润青灰釉色与开片纹",
       zoneColors: [
         { id: "tian-qing", name: "天青", pinyin: "TIAN QING", hex: "#8FA6A2", rgb: "143, 166, 162", x: 50, y: 44, meaning: "温润 · 含蓄 · 清雅", usage: "釉面主色" },
         { id: "yue-bai", name: "月白", pinyin: "YUE BAI", hex: "#D8D3C7", rgb: "216, 211, 199", x: 53, y: 16, meaning: "清冷 · 柔光 · 留白", usage: "口沿高光" },
         { id: "you-hui", name: "釉灰", pinyin: "YOU HUI", hex: "#9BAAA6", rgb: "155, 170, 166", x: 35, y: 58, meaning: "灰青 · 层次 · 静气", usage: "腹部暗面" }
       ],
-      image: "../assets/artifacts/ceramic-card-vase.png",
+      image: "../assets/artifacts/ceramic-card-vase.jpg",
       imageAlt: "青瓷盘口瓶图，器身有青灰釉色与开片纹",
       featured: true,
       description: "这件示意器物用于说明青瓷釉色的观看方式。釉层、光线与烧制状态会让同一种天青呈现不同的冷暖和深浅。",
@@ -84,14 +84,14 @@ window.ArtifactMuseumData = {
       category: "costume",
       material: "丝线、织物",
       technique: "染色、织造、刺绣",
-      zoneImage: "../assets/artifacts/costume-zone-brocade.png",
+      zoneImage: "../assets/artifacts/costume-zone-brocade.jpg",
       zoneImageAlt: "绛红织锦大图，花鸟纹样在丝面褶皱中起伏",
       zoneColors: [
         { id: "jiang-hong", name: "绛红", pinyin: "JIANG HONG", hex: "#6F2525", rgb: "111, 37, 37", x: 31, y: 43, meaning: "深红 · 庄重 · 收束", usage: "织物底色" },
         { id: "qiu-xiang", name: "秋香", pinyin: "QIU XIANG", hex: "#B28B55", rgb: "178, 139, 85", x: 46, y: 61, meaning: "温厚 · 秋意 · 克制", usage: "花纹金线" },
         { id: "dai-qing", name: "黛青", pinyin: "DAI QING", hex: "#3F5961", rgb: "63, 89, 97", x: 65, y: 31, meaning: "深远 · 含蓄 · 山色", usage: "叶羽青线" }
       ],
-      image: "../assets/artifacts/costume-card-floral.png",
+      image: "../assets/artifacts/costume-card-floral.jpg",
       imageAlt: "绛红花卉织锦局部图，金线与青蓝叶纹交织",
       featured: true,
       description: "织物中的颜色不只来自染料，也来自丝线方向、纹样密度和光泽变化。靠近观察时，色彩会显出更细的层次。",
@@ -108,14 +108,14 @@ window.ArtifactMuseumData = {
       category: "painting",
       material: "纸绢、矿物颜料、墨",
       technique: "石青、石绿、赭石与墨色层染",
-      zoneImage: "../assets/artifacts/painting-zone-landscape.png",
+      zoneImage: "../assets/artifacts/painting-zone-landscape.jpg",
       zoneImageAlt: "青绿山水画大图，山石与远峰呈现矿物颜料层次",
       zoneColors: [
         { id: "shi-qing", name: "石青", pinyin: "SHI QING", hex: "#4F7586", rgb: "79, 117, 134", x: 31, y: 31, meaning: "矿物 · 沉静 · 山色", usage: "山石青色" },
         { id: "shi-lu", name: "石绿", pinyin: "SHI LU", hex: "#758B72", rgb: "117, 139, 114", x: 47, y: 64, meaning: "草木 · 层染 · 生机", usage: "坡石绿意" },
         { id: "mo-se", name: "墨色", pinyin: "MO SE", hex: "#343735", rgb: "52, 55, 53", x: 49, y: 43, meaning: "层次 · 纸墨 · 沉静", usage: "树影与皴线" }
       ],
-      image: "../assets/artifacts/painting-card-green-cliff.png",
+      image: "../assets/artifacts/painting-card-green-cliff.jpg",
       imageAlt: "青绿山水画局部图，山石上可见石青石绿颜料",
       featured: true,
       description: "书画之色常在局部发生。石青、石绿、赭石与墨色层层进入纸绢，使山石、云气与远峰拥有不同的色相边界。",
@@ -132,14 +132,14 @@ window.ArtifactMuseumData = {
       category: "architecture",
       material: "墙面、琉璃瓦、石基",
       technique: "空间表面与建筑彩画",
-      zoneImage: "../assets/artifacts/architecture-zone-palace-wall.png",
+      zoneImage: "../assets/artifacts/architecture-zone-palace-wall.jpg",
       zoneImageAlt: "宫墙与琉璃瓦建筑大图，朱红墙面、琉璃瓦和石基层次分明",
       zoneColors: [
         { id: "gong-qiang-hong", name: "宫墙红", pinyin: "GONG QIANG HONG", hex: "#963C34", rgb: "150, 60, 52", x: 43, y: 52, meaning: "庄重 · 空间 · 秩序", usage: "墙面" },
         { id: "liu-li-huang", name: "琉璃黄", pinyin: "LIU LI HUANG", hex: "#C58B35", rgb: "197, 139, 53", x: 57, y: 18, meaning: "明净 · 礼制 · 屋瓦", usage: "瓦当与屋脊" },
         { id: "han-bai", name: "汉白", pinyin: "HAN BAI", hex: "#D8D0BE", rgb: "216, 208, 190", x: 50, y: 77, meaning: "石质 · 清肃 · 承托", usage: "石基" }
       ],
-      image: "../assets/artifacts/architecture-card-tile-shadow.png",
+      image: "../assets/artifacts/architecture-card-tile-shadow.jpg",
       imageAlt: "宫墙瓦面局部图，黄色琉璃瓦、绿色檐下与朱红墙面形成层次",
       featured: true,
       description: "建筑中的颜色属于空间秩序。墙、瓦、梁枋和石基共同构成可行走的色谱，而不是单一平面的颜色装饰。",
@@ -156,7 +156,7 @@ window.ArtifactMuseumData = {
       category: "ceramic",
       material: "瓷、釉",
       technique: "青釉层次",
-      image: "../assets/artifacts/ceramic-card-bowl.png",
+      image: "../assets/artifacts/ceramic-card-bowl.jpg",
       imageAlt: "豆青釉碗近景图，可见口沿、釉色和开片肌理",
       description: "豆青与月白常在光线中彼此靠近，数字色值只能作为屏幕展示参考。",
       colors: [
@@ -170,7 +170,7 @@ window.ArtifactMuseumData = {
       category: "costume",
       material: "丝织物",
       technique: "染与织",
-      image: "../assets/artifacts/costume-card-ribbon.png",
+      image: "../assets/artifacts/costume-card-ribbon.jpg",
       imageAlt: "红地花卉织带局部图，纹样沿织带纵向展开",
       description: "服饰色彩的浓淡，常随纹样密度和丝线反光而改变。",
       colors: [
@@ -184,7 +184,7 @@ window.ArtifactMuseumData = {
       category: "painting",
       material: "纸本设色",
       technique: "矿物与墨色",
-      image: "../assets/artifacts/painting-card-ochre-ridge.png",
+      image: "../assets/artifacts/painting-card-ochre-ridge.jpg",
       imageAlt: "青绿山水画面局部示意图",
       description: "赭石让山石有土性和重量，也让青绿不至于漂浮。",
       colors: [
@@ -198,7 +198,7 @@ window.ArtifactMuseumData = {
       category: "architecture",
       material: "瓦、木、墙",
       technique: "建筑表面色",
-      image: "../assets/artifacts/architecture-card-eaves.png",
+      image: "../assets/artifacts/architecture-card-eaves.jpg",
       imageAlt: "琉璃瓦檐与朱红墙面近景图，檐下阴影清晰",
       description: "黛瓦灰不是纯黑，而是由阴影、灰尘和瓦面材质共同形成的低明度色。",
       colors: [

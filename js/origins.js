@@ -14,7 +14,7 @@
       artifact: "汝窑天青釉",
       era: "北宋",
       caption: "釉色含蓄温润，成为后世理解“天青”的重要视觉参照。",
-      image: "../assets/origins/orthodox-qing.png",
+      image: "../assets/origins/orthodox-qing.jpg",
       derived: [
         ["天青", "TIAN QING", "#6E8B8B", "110, 139, 139", "宋瓷色意", "陶瓷", "温润 · 含蓄 · 克制"],
         ["豆青", "DOU QING", "#8EA58B", "142, 165, 139", "草木色意", "陶瓷", "朴素 · 清润 · 亲近"],
@@ -37,7 +37,7 @@
       artifact: "朱漆器",
       era: "漆艺传统",
       caption: "朱砂与漆艺共同塑造出沉着的红色光泽，也让赤色进入礼仪空间。",
-      image: "../assets/origins/orthodox-chi.png",
+      image: "../assets/origins/orthodox-chi.jpg",
       derived: [
         ["朱砂", "ZHU SHA", "#A83B32", "168, 59, 50", "矿物色意", "漆器", "庄重 · 礼仪 · 矿物"],
         ["胭脂", "YAN ZHI", "#9E4F4F", "158, 79, 79", "妆色意象", "染织", "柔和 · 肌理 · 温度"],
@@ -60,7 +60,7 @@
       artifact: "黄色服饰",
       era: "明清宫廷礼制",
       caption: "色彩在服饰制度中，不仅承担审美作用，也参与身份与等级的表达。",
-      image: "../assets/origins/orthodox-huang.png",
+      image: "../assets/origins/orthodox-huang.jpg",
       derived: [
         ["秋香", "QIU XIANG", "#B19A61", "177, 154, 97", "岁时色意", "织物", "温厚 · 秋意 · 克制"],
         ["鹅黄", "E HUANG", "#E0C878", "224, 200, 120", "草木色意", "染织", "明柔 · 初生 · 轻暖"],
@@ -83,7 +83,7 @@
       artifact: "德化白瓷",
       era: "白瓷传统",
       caption: "白瓷的微妙暖冷、厚薄与光泽，让白色拥有可被观看的层次。",
-      image: "../assets/origins/orthodox-bai.png",
+      image: "../assets/origins/orthodox-bai.jpg",
       derived: [
         ["月白", "YUE BAI", "#D6D2C3", "214, 210, 195", "月色意象", "织物", "清冷 · 温柔 · 留白"],
         ["象牙白", "XIANG YA BAI", "#E8DECB", "232, 222, 203", "器物色意", "器用", "温润 · 柔白 · 骨质"],
@@ -106,7 +106,7 @@
       artifact: "黑漆器",
       era: "漆艺与器用",
       caption: "黑色在漆器和陶瓷上形成深处的光，静而不空。",
-      image: "../assets/origins/orthodox-hei.png",
+      image: "../assets/origins/orthodox-hei.jpg",
       derived: [
         ["玄色", "XUAN SE", "#202321", "32, 35, 33", "玄色意象", "礼服", "深远 · 幽微 · 庄重"],
         ["黛黑", "DAI HEI", "#2B3331", "43, 51, 49", "山水色意", "染织", "青黑 · 远山 · 含蓄"],
@@ -144,7 +144,7 @@
       const artifact = `
         <div>
           <div class="artifact-plate" data-cursor-text="观器" style="--panel-color:${item.color}">
-            <img src="${item.image}" alt="${item.artifact}">
+            <img src="${item.image}" alt="${item.artifact}" loading="${item.index === "01" ? "eager" : "lazy"}" decoding="async" fetchpriority="${item.index === "01" ? "high" : "auto"}">
           </div>
           <div class="artifact-label">
             <strong>${item.artifact}</strong>

@@ -143,6 +143,32 @@
 .reveal:nth-child(4) { transition-delay: 240ms; }
 
 @media (prefers-reduced-motion: reduce) {
+  #page-transition,
+  #page-transition.is-active,
+  #page-transition.is-entering {
+    clip-path: none;
+    opacity: 0;
+  }
+
+  #page-transition.is-active {
+    opacity: 1;
+  }
+
+  #page-transition::before {
+    padding-top: 0;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  #page-transition::after {
+    display: none;
+  }
+
+  .js body.is-page-exiting {
+    filter: none;
+    transform: none;
+  }
+
   .home-page main::before,
   .home-page main::after,
   .hero-section::before {
