@@ -28,7 +28,7 @@ function initScrollEffects() {
     if (header) {
       const heroBottom = hero ? hero.offsetTop + hero.offsetHeight : 0;
       const inHero = hero && scrollY < heroBottom - 96;
-      header.dataset.theme = inHero || closingVisible ? "dark" : "light";
+      header.dataset.theme = inHero ? (hero.dataset.headerTheme || "dark") : (closingVisible ? "dark" : "light");
     }
     if (heroTitle) {
       const amount = Math.min(scrollY / 360, 1);

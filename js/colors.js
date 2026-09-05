@@ -5,19 +5,29 @@ function initHeroIntro() {
     reducedMotion: window.MuseumUtils.prefersReducedMotion
   };
   const heroVideo = document.querySelector(".hero-video");
-  if (heroVideo && heroState.reducedMotion) {
-    heroVideo.removeAttribute("autoplay");
-    heroVideo.pause();
-  } else if (heroVideo) {
-    window.setTimeout(() => {
-      heroVideo.load();
-      heroVideo.play().catch(() => {});
-      heroVideo.classList.add("is-loading");
-      heroVideo.addEventListener("canplay", () => {
-        heroVideo.classList.remove("is-loading");
-        heroVideo.classList.add("is-ready");
-      }, { once: true });
-    }, 900);
+  if (heroVideo) {
+    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let enabled = !motionPreference.matches;
+    let visible = false;
+    heroVideo.muted = true;
+
+    const syncPlayback = () => {
+      if (enabled && visible && !document.hidden) {
+        heroVideo.play().catch(() => {});
+      } else {
+        heroVideo.pause();
+      }
+    };
+    motionPreference.addEventListener("change", (event) => {
+      enabled = !event.matches;
+      syncPlayback();
+    });
+    document.addEventListener("visibilitychange", syncPlayback);
+    const visibilityObserver = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      syncPlayback();
+    });
+    visibilityObserver.observe(heroVideo.closest(".hero-section"));
   }
   window.heroState = heroState;
   window.setTimeout(() => {

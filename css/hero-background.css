@@ -1,0 +1,64 @@
+.home-page .hero-section {
+  z-index: 2;
+  color: #252927;
+  background: #f7efe2;
+}
+
+.home-page .hero-video {
+  opacity: 1;
+  object-position: center;
+}
+
+.home-page .hero-section::before,
+.home-page .hero-section::after {
+  content: none;
+}
+
+.home-page .hero-title-wrap {
+  top: 28%;
+}
+
+.home-page .hero-label {
+  bottom: 24px;
+}
+
+.home-page .hero-title {
+  font-size: 72px;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.home-page .hero-subtitle {
+  margin-top: 22px;
+  color: #45443f;
+}
+
+.home-page .hero-english,
+.home-page .hero-label,
+.home-page .hero-orthodox,
+.home-page .scroll-cue {
+  color: #55544f;
+}
+
+@media (max-width: 768px) {
+  .home-page .hero-title {
+    font-size: 44px;
+  }
+
+  .home-page .hero-title-wrap {
+    top: 29%;
+    width: 100%;
+  }
+
+  .home-page .hero-video {
+    top: auto;
+    bottom: 112px;
+    height: 54%;
+  }
+}
+
+@media (max-width: 359px) {
+  .home-page .hero-title {
+    font-size: 38px;
+  }
+}
