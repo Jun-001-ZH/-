@@ -1,0 +1,159 @@
+@keyframes heroWashMotion {
+  0% {
+    background-position: 38% 42%, 72% 58%, 48% 70%, center;
+  }
+  100% {
+    background-position: 52% 50%, 56% 46%, 42% 78%, center;
+  }
+}
+
+@keyframes inkWake {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.02);
+  }
+  24% {
+    opacity: 0.72;
+  }
+  100% {
+    opacity: 0.86;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes heroPigmentCurrent {
+  0% {
+    transform: translate3d(-3.4%, -2.2%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(4.2%, 2.8%, 0) scale(1.13);
+  }
+}
+
+@keyframes heroInkCurrent {
+  0% {
+    transform: translate3d(2.8%, -2%, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(-2.8%, 3%, 0) scale(1.15);
+  }
+}
+
+@keyframes pigmentWake {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--parallax-x, 0), var(--parallax-y, 0), 0) scale(0.72);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(var(--parallax-x, 0), var(--parallax-y, 0), 0) scale(1);
+  }
+}
+
+@keyframes titleWake {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 18px));
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollLine {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+@keyframes scrollWashDrift {
+  from {
+    transform: translate3d(-1.2%, -0.4%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(1.2%, 0.4%, 0) scale(1.035);
+  }
+}
+
+@keyframes longScrollInkBreath {
+  from {
+    background-position: 0% 0%, 100% 24%, 24% 68%, center;
+  }
+  to {
+    background-position: 12% 4%, 88% 30%, 32% 74%, center;
+  }
+}
+
+@keyframes inkRipple {
+  from {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(0.46);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.ink-ripple {
+  position: fixed;
+  z-index: 2;
+  width: 260px;
+  height: 260px;
+  pointer-events: none;
+  border-radius: 48% 52% 58% 42% / 46% 60% 40% 54%;
+  background: radial-gradient(circle, rgba(28, 29, 27, 0.16), rgba(28, 29, 27, 0) 66%);
+  filter: blur(18px);
+  animation: inkRipple 920ms var(--ease-out) both;
+}
+
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.js .reveal {
+  opacity: 0;
+  transition: opacity 850ms var(--ease-out), transform 850ms var(--ease-out);
+}
+
+.js .reveal-up { transform: translateY(30px); }
+.js .reveal-left { transform: translateX(-32px); }
+.js .reveal-right { transform: translateX(32px); }
+.js .reveal-scale { transform: scale(0.96); }
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+.reveal:nth-child(2) { transition-delay: 80ms; }
+.reveal:nth-child(3) { transition-delay: 160ms; }
+.reveal:nth-child(4) { transition-delay: 240ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page main::before,
+  .home-page main::after,
+  .hero-section::before {
+    animation: none;
+    transform: none;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}

@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@source "./components/originkit/**/*.{js,jsx,ts,tsx}";
+
+:where([data-react-island]) {
+  min-width: 0;
+}

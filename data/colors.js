@@ -1,0 +1,41 @@
+window.MuseumColorData = {
+  fiveColors: [
+    { key: "qing", name: "青", color: "#55766F", direction: "东方", element: "木", season: "春", meaning: "生长 · 初生 · 东方", description: "青，东方之色。古人以青应木，应春，象征万物发生与生命萌动。", glow: "rgba(85, 118, 111, 0.19)", x: "18%", y: "42%" },
+    { key: "chi", name: "赤", color: "#A84A3F", direction: "南方", element: "火", season: "夏", meaning: "礼仪 · 炽盛 · 光明", description: "赤，南方之色。它近于朱砂与赭红，关联礼仪、火德与盛夏之光。", glow: "rgba(168, 74, 63, 0.17)", x: "82%", y: "56%" },
+    { key: "huang", name: "黄", color: "#C5A35A", direction: "中央", element: "土", season: "长夏", meaning: "中央 · 土德 · 尊贵", description: "黄居中央，应土德。它不是刺目的金色，而是大地、礼制与秩序的温厚。", glow: "rgba(197, 163, 90, 0.18)", x: "50%", y: "70%" },
+    { key: "bai", name: "白", color: "#D9D4C8", direction: "西方", element: "金", season: "秋", meaning: "肃静 · 金石 · 收敛", description: "白应西方与秋。它以月白、灰白与米色呈现清肃，像器物表面的留白。", glow: "rgba(217, 212, 200, 0.32)", x: "74%", y: "28%" },
+    { key: "hei", name: "黑", color: "#252927", direction: "北方", element: "水", season: "冬", meaning: "玄远 · 水德 · 冬藏", description: "黑为玄色，应北方与水。它不是绝对的黑，而是深墨、冬藏与幽远。", glow: "rgba(37, 41, 39, 0.16)", x: "24%", y: "64%" }
+  ],
+  dailyColors: [
+    { name: "天青", pinyin: "TIAN QING", hex: "#6E8B8B", rgb: "110, 139, 139", quote: "“雨过天青云破处，<br>这般颜色做将来。”", source: "宋瓷色意", description: "介于青与蓝之间，温润而含蓄。", family: "青" },
+    { name: "月白", pinyin: "YUE BAI", hex: "#D6D2C3", rgb: "214, 210, 195", quote: "“明月照素壁，<br>清辉入衣襟。”", source: "月色意象", description: "白中含灰，像月光落在宣纸上的一层冷暖。", family: "白" },
+    { name: "朱砂", pinyin: "ZHU SHA", hex: "#A83B32", rgb: "168, 59, 50", quote: "“一点朱痕，<br>在纸上定其名。”", source: "印色意象", description: "矿物红色，浓而不艳，常与印章、礼制和书写相连。", family: "赤" },
+    { name: "秋香", pinyin: "QIU XIANG", hex: "#B19A61", rgb: "177, 154, 97", quote: "“草木将黄，<br>风里先有秋声。”", source: "岁时色意", description: "黄中带灰绿，温厚、沉静，有秋日草木的余温。", family: "黄" },
+    { name: "玄青", pinyin: "XUAN QING", hex: "#2F3F3B", rgb: "47, 63, 59", quote: "“青入深处，<br>遂近于玄。”", source: "玄色意象", description: "青与黑之间的深色，含蓄、安定，带有水墨深处的气息。", family: "黑" },
+    { name: "藕荷", pinyin: "OU HE", hex: "#BFA7A0", rgb: "191, 167, 160", quote: "“荷衣微褪，<br>仍留水气。”", source: "生活色意", description: "粉中带灰紫，柔和而克制，适合表现织物与暮色。", family: "赤" },
+    { name: "石绿", pinyin: "SHI LV", hex: "#5E8A72", rgb: "94, 138, 114", quote: "“山石有骨，<br>绿意生其间。”", source: "矿物色意", description: "来自矿物颜料的青绿色，稳定、清润，有山石的质感。", family: "青" },
+    { name: "缃色", pinyin: "XIANG SE", hex: "#C9A96A", rgb: "201, 169, 106", quote: "“旧卷微黄，<br>字里尚有光。”", source: "书卷色意", description: "浅黄而带纸性，常让人联想到书卷、丝帛和旧日光。", family: "黄" },
+    { name: "墨灰", pinyin: "MO HUI", hex: "#4B4D49", rgb: "75, 77, 73", quote: "“墨未尽黑，<br>灰处见层次。”", source: "水墨色意", description: "介于黑与灰之间，保留墨色层次，适合安静背景。", family: "黑" },
+    { name: "米汤娇", pinyin: "MI TANG JIAO", hex: "#EEE5D2", rgb: "238, 229, 210", quote: "“白不至冷，<br>暖处近人。”", source: "生活色意", description: "暖白色，像米汤与宣纸的柔光，温润不刺眼。", family: "白" },
+    { name: "胭脂", pinyin: "YAN ZHI", hex: "#9E4F4F", rgb: "158, 79, 79", quote: "“红入肌理，<br>便不喧哗。”", source: "妆色意象", description: "低饱和红色，带一点褐调，柔中有定。", family: "赤" },
+    { name: "苍绿", pinyin: "CANG LV", hex: "#586F5F", rgb: "88, 111, 95", quote: "“老木经霜，<br>青意未尽。”", source: "草木色意", description: "灰绿沉稳，像经年树叶与山林阴影。", family: "青" },
+    { name: "黛蓝", pinyin: "DAI LAN", hex: "#42556B", rgb: "66, 85, 107", quote: "“远山不言，<br>只以黛色相见。”", source: "山水色意", description: "蓝中带灰黑，近于远山，深而不冷。", family: "黑" },
+    { name: "酡颜", pinyin: "TUO YAN", hex: "#B46A55", rgb: "180, 106, 85", quote: "“微酡在面，<br>不胜春温。”", source: "人物色意", description: "温暖的浅赭红，含蓄地表现血色与温度。", family: "赤" },
+    { name: "竹月", pinyin: "ZHU YUE", hex: "#C7D0C0", rgb: "199, 208, 192", quote: "“竹影筛月，<br>白中有青。”", source: "庭院色意", description: "浅青白色，清雅、通透，像竹影下的月光。", family: "白" },
+    { name: "赭石", pinyin: "ZHE SHI", hex: "#9C6A49", rgb: "156, 106, 73", quote: "“土石有色，<br>沉处生温。”", source: "矿物色意", description: "褐黄偏红，带有天然土石与陶器的温度。", family: "黄" },
+    { name: "松花", pinyin: "SONG HUA", hex: "#B7B278", rgb: "183, 178, 120", quote: "“松粉落衣，<br>春色微黄。”", source: "草木色意", description: "灰黄偏绿，轻而不浮，有植物粉末的柔和。", family: "黄" },
+    { name: "青磁", pinyin: "QING CI", hex: "#8BA59B", rgb: "139, 165, 155", quote: "“釉面含光，<br>如雨后远天。”", source: "瓷器色意", description: "青釉般的浅灰绿，润泽、安静，带有瓷面光感。", family: "青" },
+    { name: "檀色", pinyin: "TAN SE", hex: "#7E5141", rgb: "126, 81, 65", quote: "“木香入色，<br>久而愈沉。”", source: "器物色意", description: "深褐偏红，像木器经年后的沉静光泽。", family: "赤" },
+    { name: "银灰", pinyin: "YIN HUI", hex: "#B8B7AF", rgb: "184, 183, 175", quote: "“金石敛光，<br>灰里见白。”", source: "金石色意", description: "低光泽灰白，具有金属收敛后的清冷。", family: "白" },
+    { name: "鸦青", pinyin: "YA QING", hex: "#2E3533", rgb: "46, 53, 51", quote: "“夜色未尽，<br>青意犹存。”", source: "衣冠色意", description: "黑中带青，深而有呼吸感。", family: "黑" },
+    { name: "杏子", pinyin: "XING ZI", hex: "#D8B36A", rgb: "216, 179, 106", quote: "“初熟之黄，<br>尚含日暖。”", source: "果实色意", description: "柔暖黄橙色，保留果实成熟前后的温度。", family: "黄" },
+    { name: "水红", pinyin: "SHUI HONG", hex: "#C27A74", rgb: "194, 122, 116", quote: "“红经水洗，<br>便有余韵。”", source: "染织色意", description: "浅红偏灰，像染色在水中退去锋芒。", family: "赤" },
+    { name: "豆青", pinyin: "DOU QING", hex: "#8EA58B", rgb: "142, 165, 139", quote: "“豆蔻微青，<br>春在浅处。”", source: "草木色意", description: "青绿偏暖，朴素、亲近，带生活气息。", family: "青" },
+    { name: "霜色", pinyin: "SHUANG SE", hex: "#E1DED3", rgb: "225, 222, 211", quote: "“霜落无声，<br>白意渐生。”", source: "节令色意", description: "灰白微暖，轻薄而安定。", family: "白" },
+    { name: "茶褐", pinyin: "CHA HE", hex: "#806B4F", rgb: "128, 107, 79", quote: "“茶汤既深，<br>色亦有骨。”", source: "生活色意", description: "褐中带黄，温厚、实在，适合表现日常器用。", family: "黄" },
+    { name: "绀青", pinyin: "GAN QING", hex: "#33465D", rgb: "51, 70, 93", quote: "“青至深处，<br>近海亦近夜。”", source: "染织色意", description: "深蓝青色，沉静而庄重。", family: "黑" },
+    { name: "玉色", pinyin: "YU SE", hex: "#D8DED4", rgb: "216, 222, 212", quote: "“玉不夺目，<br>温润自明。”", source: "玉石色意", description: "浅青白，温润洁净，像玉器内含的光。", family: "白" },
+    { name: "棠梨", pinyin: "TANG LI", hex: "#B75D4B", rgb: "183, 93, 75", quote: "“花色入暮，<br>红意渐沉。”", source: "花木色意", description: "偏赭的花红色，比朱砂更柔，也更近人。", family: "赤" },
+    { name: "碧山", pinyin: "BI SHAN", hex: "#6F8E82", rgb: "111, 142, 130", quote: "“山色隔雨，<br>青碧不言。”", source: "山水色意", description: "青绿含灰，像雨后远山的沉静色层。", family: "青" }
+  ]
+};

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="中国色彩数字博物馆第四展厅：拾色藏库，检索、筛选、收藏并组合中国传统色数字参考色。">
+    <title>拾色藏库｜中国色彩数字博物馆</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/archive.css">
+  </head>
+  <body class="archive-page">
+    <header class="site-header archive-header" data-theme="light">
+      <a class="site-brand" href="../index.html" data-transition-color="#55766f" aria-label="中国色彩数字博物馆首页">
+        <span>中国色彩数字博物馆</span>
+        <small>CHINESE COLOR MUSEUM</small>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="打开菜单" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="../index.html" data-transition-color="#55766f">序厅</a>
+        <a href="origins.html" data-transition-color="#344943">正色溯源</a>
+        <a href="artifacts.html" data-transition-color="#829b97">物色生香</a>
+        <a href="seasons.html" data-transition-color="#9EAD8D">岁时流转</a>
+        <a class="is-active" href="archive.html" data-transition-color="#963c34">拾色藏库</a>
+      </nav>
+    </header>
+
+    <main class="archive-main">
+      <section class="archive-hero" aria-label="第四展厅拾色藏库">
+        <div class="archive-spines" data-archive-spines aria-hidden="true"></div>
+        <div class="archive-hero__copy">
+          <p class="hall-mark">第四展厅<span>EXHIBITION 04</span></p>
+          <h1><span>拾色</span><span>藏库</span></h1>
+          <p class="archive-hero__line">收天下之色，藏四时之美。</p>
+          <p class="archive-hero__text">五色为始，器物承色，四时流色。走到这里，散落于天地、器物与时间中的颜色，终于被重新收入一座数字藏库。</p>
+          <div class="archive-hero__stats" aria-label="藏库统计">
+            <span><b data-count-to="0" data-stat="total">0</b><small>种传统色</small></span>
+            <span><b data-count-to="0" data-stat="families">0</b><small>大色系</small></span>
+            <span><b data-count-to="24">0</b><small>节气代表色</small></span>
+            <span><b data-count-to="0" data-stat="categories">0</b><small>类文化应用</small></span>
+          </div>
+        </div>
+        <div class="archive-spine-tip" data-spine-tip aria-hidden="true"></div>
+        <div class="scroll-cue" aria-hidden="true"><span>向下 · 开库寻色</span><i></i></div>
+      </section>
+
+      <section class="archive-spectrum-section" aria-labelledby="spectrum-title">
+        <div class="archive-container">
+          <div class="archive-section-head reveal reveal-up">
+            <span>COLOR SPECTRUM</span>
+            <h2 id="spectrum-title">万色一览</h2>
+            <p>先看中国传统色如何汇聚成一整片色域。</p>
+          </div>
+          <div class="archive-spectrum" data-spectrum aria-label="中国传统色色域"></div>
+          <p class="archive-note">这里的数字色值用于屏幕展示与设计参考。传统颜色会受到材料、光线、工艺和文献语境影响，不应被理解为只有唯一固定 HEX 值。</p>
+        </div>
+      </section>
+
+      <section class="archive-search-section" id="archive-search" aria-labelledby="search-title">
+        <div class="archive-container">
+          <div class="archive-section-head reveal reveal-up">
+            <span>SEARCH THE ARCHIVE</span>
+            <h2 id="search-title">寻色</h2>
+            <p>按色名、色系、时代与应用，从藏库中找到一抹颜色。</p>
+          </div>
+          <div class="archive-toolbar" data-toolbar>
+            <label class="archive-search-field">
+              <span>搜索颜色</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.5 16.5 4 4"></path></svg>
+              <input type="search" placeholder="搜索一抹中国色……" data-search-input>
+              <button type="button" data-clear-search aria-label="清空搜索">×</button>
+            </label>
+            <div class="family-filter" data-family-filter aria-label="色系筛选"></div>
+            <label class="archive-select">朝代
+              <select data-dynasty-filter></select>
+            </label>
+            <label class="archive-select">应用
+              <select data-category-filter></select>
+            </label>
+            <label class="archive-select">排序
+              <select data-sort-select>
+                <option value="default">馆藏顺序</option>
+                <option value="hue">色相</option>
+                <option value="lightness">明度</option>
+                <option value="name">名称</option>
+              </select>
+            </label>
+            <button class="archive-filter-sheet-trigger" type="button" data-open-filters>筛选</button>
+            <output class="archive-result-count" data-result-count aria-live="polite">共寻得 0 色</output>
+          </div>
+          <div class="archive-active-filters" data-active-filters></div>
+        </div>
+      </section>
+
+      <section class="archive-collection-section" id="archive-collection" aria-labelledby="collection-title">
+        <div class="archive-container">
+          <div class="archive-collection-head">
+            <div class="archive-section-head reveal reveal-up">
+              <span>COLOR COLLECTION</span>
+              <h2 id="collection-title">色彩藏目</h2>
+              <p>每一种颜色，都是一条可检索、可复制、可收入的数字档案。</p>
+            </div>
+            <div class="archive-view-switch" aria-label="视图切换">
+              <button type="button" data-view-mode="standard" aria-pressed="true" aria-label="标准视图">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7"></rect><rect x="13" y="4" width="7" height="7"></rect><rect x="4" y="13" width="7" height="7"></rect><rect x="13" y="13" width="7" height="7"></rect></svg>
+                标准
+              </button>
+              <button type="button" data-view-mode="compact" aria-pressed="false" aria-label="紧凑视图">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="3"></rect><rect x="4" y="11" width="16" height="3"></rect><rect x="4" y="17" width="16" height="3"></rect></svg>
+                紧凑
+              </button>
+            </div>
+          </div>
+          <div class="archive-grid" data-archive-grid></div>
+          <button class="archive-more-button" type="button" data-show-more hidden>显示更多</button>
+          <div class="archive-empty" data-archive-empty hidden>
+            <h3>此色尚未入藏。</h3>
+            <p>试试搜索其他色名，或清除筛选条件。</p>
+            <button class="line-button" type="button" data-clear-all>清除全部条件 <span>→</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="archive-picked-section" id="my-colors" aria-labelledby="picked-title">
+        <div class="archive-container">
+          <div class="archive-section-head reveal reveal-up">
+            <span>MY COLLECTION</span>
+            <h2 id="picked-title">我的拾色</h2>
+            <p>从不同展厅带回来的颜色，在这里重新相遇。</p>
+          </div>
+          <div class="archive-picked" data-picked></div>
+        </div>
+      </section>
+
+      <section class="classic-palettes-section" aria-labelledby="palettes-title">
+        <div class="archive-container">
+          <div class="archive-section-head reveal reveal-up">
+            <span>CLASSIC PALETTES</span>
+            <h2 id="palettes-title">古色成章</h2>
+            <p>颜色彼此相遇，才真正形成气韵。</p>
+          </div>
+          <div class="classic-palettes" data-classic-palettes></div>
+        </div>
+      </section>
+
+      <section class="composer-section" aria-labelledby="composer-title">
+        <div class="archive-container composer-layout">
+          <div class="archive-section-head reveal reveal-up">
+            <span>COLOR COMPOSER</span>
+            <h2 id="composer-title">以色成章</h2>
+            <p>从藏库里挑几种颜色，组合属于你的传统配色。</p>
+          </div>
+          <div class="composer-board" data-composer></div>
+        </div>
+      </section>
+
+      <section class="archive-observations-section" aria-labelledby="observations-title">
+        <div class="archive-container">
+          <div class="archive-section-head reveal reveal-up">
+            <span>ARCHIVE OBSERVATIONS</span>
+            <h2 id="observations-title">藏库观察</h2>
+            <p>以下只呈现本网站当前收录数据的分布，不代表中国历史全部传统色的统计结论。</p>
+          </div>
+          <div class="archive-observations" data-observations></div>
+        </div>
+      </section>
+
+      <section class="archive-closing" aria-labelledby="archive-closing-title">
+        <div class="closing-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="archive-closing__copy reveal reveal-up">
+          <h2 id="archive-closing-title">千色入藏，<br>观色未止。</h2>
+          <p>从青、赤、黄、白、黑出发，颜色走过器物，经过春夏秋冬，最终在这里汇成一座数字藏库。</p>
+          <p>但颜色从不会真正停在色卡里。它仍会继续出现在建筑、衣物、绘画，以及今天每一次新的设计之中。</p>
+          <div class="archive-closing__links">
+            <a href="../index.html" data-transition-color="#55766f">返回序厅 · 重新观色 →</a>
+            <a href="origins.html" data-transition-color="#344943">回到正色之始 →</a>
+            <button type="button" data-scroll-picked>查看我的拾色</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__top">
+        <div>
+          <strong>中国色彩数字博物馆</strong>
+          <span>CHINESE COLOR DIGITAL MUSEUM</span>
+        </div>
+        <nav aria-label="页脚导航">
+          <a href="../index.html" data-transition-color="#55766f">序厅</a>
+          <a href="origins.html" data-transition-color="#344943">正色溯源</a>
+          <a href="artifacts.html" data-transition-color="#829b97">物色生香</a>
+          <a href="seasons.html" data-transition-color="#9EAD8D">岁时流转</a>
+          <a href="archive.html" data-transition-color="#963c34">拾色藏库</a>
+        </nav>
+        <p>万色<br>归藏</p>
+      </div>
+      <div class="site-footer__bottom">
+        <span>由藏库回到序厅</span>
+        <i aria-hidden="true">色</i>
+      </div>
+    </footer>
+
+    <aside class="archive-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="archive-drawer-title">
+      <button class="archive-drawer__close" type="button" aria-label="关闭颜色档案">收起</button>
+      <div class="archive-drawer__swatch"></div>
+      <div class="archive-drawer__content"></div>
+    </aside>
+    <button class="archive-drawer-backdrop" type="button" aria-label="关闭颜色档案"></button>
+
+    <div class="archive-filter-sheet" aria-hidden="true">
+      <button class="archive-filter-sheet__close" type="button" aria-label="关闭筛选">收起</button>
+      <div data-sheet-content></div>
+    </div>
+    <button class="archive-filter-backdrop" type="button" aria-label="关闭筛选"></button>
+
+    <aside class="composer-picker" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="composer-picker-title">
+      <button class="composer-picker__close" type="button" aria-label="关闭选色">收起</button>
+      <h2 id="composer-picker-title">选择一抹颜色</h2>
+      <div class="composer-picker__tabs" role="tablist" aria-label="选色来源">
+        <button type="button" role="tab" aria-selected="true" data-picker-tab="picked">我的拾色</button>
+        <button type="button" role="tab" aria-selected="false" data-picker-tab="all">全部颜色</button>
+      </div>
+      <div class="composer-picker__panel" data-picker-panel></div>
+    </aside>
+    <button class="composer-picker-backdrop" type="button" aria-label="关闭选色"></button>
+
+    <div class="archive-toast" data-toast aria-live="polite"></div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <div id="page-transition" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"><span></span></div>
+
+    <script src="../data/colors.js"></script>
+    <script src="../data/archive-colors.js"></script>
+    <script src="../data/palettes.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/cursor.js"></script>
+    <script src="../js/scroll.js"></script>
+    <script src="../js/transition.js"></script>
+    <script src="../js/colors.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/archive.js"></script>
+  </body>
+</html>

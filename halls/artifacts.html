@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="中国色彩数字博物馆第二展厅：物色生香，从器物、服饰、书画与建筑中寻找传统色。">
+    <title>物色生香｜中国色彩数字博物馆</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/artifacts.css">
+  </head>
+  <body class="artifacts-page">
+    <header class="site-header artifacts-header" data-theme="light">
+      <a class="site-brand" href="../index.html" data-transition-color="#55766f" aria-label="中国色彩数字博物馆首页">
+        <span>中国色彩数字博物馆</span>
+        <small>CHINESE COLOR MUSEUM</small>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="打开菜单" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="../index.html" data-transition-color="#55766f">序厅</a>
+        <a href="origins.html" data-transition-color="#344943">正色溯源</a>
+        <a class="is-active" href="artifacts.html" data-transition-color="#829b97">物色生香</a>
+        <a href="seasons.html" data-transition-color="#9EAD8D">岁时流转</a>
+        <a href="archive.html" data-transition-color="#963c34">拾色藏库</a>
+      </nav>
+    </header>
+
+    <main class="artifacts-main">
+      <section class="artifacts-hero" aria-label="第二展厅物色生香">
+        <div class="artifacts-hero__copy">
+          <p class="hall-mark">第二展厅<span>EXHIBITION 02</span></p>
+          <h1><span>物色</span><span>生香</span></h1>
+          <p class="artifacts-hero__line">器物无言，颜色自述千年。</p>
+          <p class="artifacts-hero__text">颜色从不只存在于名字里。它附着于釉面，沉入丝线，铺展于纸绢，也停留在宫墙与瓦檐之间。在这一展厅，从一件器物开始寻找中国色。</p>
+        </div>
+        <figure class="hero-artifact" data-cursor-text="观器">
+          <img src="../assets/artifacts/ceramic-celadon.png" alt="设计期合成青瓷器物图，器身呈低饱和天青釉色">
+        </figure>
+        <div class="scroll-cue" aria-hidden="true"><span>向下 · 入藏观色</span><i></i></div>
+      </section>
+
+      <section class="artifact-category-intro" aria-labelledby="category-title">
+        <div class="section-title reveal reveal-up">
+          <span class="section-title__index">WHERE COLORS LIVE</span>
+          <h2 id="category-title">色从何来</h2>
+          <p>同一种颜色，在不同材质中拥有完全不同的生命。</p>
+        </div>
+        <div class="material-bands" aria-label="四种器物世界"></div>
+      </section>
+
+      <section class="featured-artifacts" aria-labelledby="featured-title">
+        <div class="section-title reveal reveal-up">
+          <span class="section-title__index">FEATURED COLLECTION</span>
+          <h2 id="featured-title">镇馆色藏</h2>
+          <p>先看四件器物，再进入更完整的中国色谱。</p>
+        </div>
+        <div class="featured-layout"></div>
+      </section>
+
+      <nav class="artifact-side-nav" aria-label="第二展厅分区导航"></nav>
+      <nav class="artifact-mobile-nav" aria-label="第二展厅移动分区导航"></nav>
+
+      <div class="artifact-zones"></div>
+
+      <section class="artifact-explorer-section" id="artifact-lab" aria-labelledby="lab-title">
+        <div class="lab-shell">
+          <div class="section-title">
+            <span class="section-title__index">FIND COLORS IN OBJECTS</span>
+            <h2 id="lab-title">观物寻色</h2>
+            <p>移动视线，从一件器物中拾取它的颜色。</p>
+          </div>
+          <div class="lab-layout">
+            <div class="lab-selector" aria-label="选择一件器物"></div>
+            <figure class="lab-stage" data-cursor-text="拾色">
+              <img src="../assets/artifacts/ceramic-celadon.png" alt="青瓷器物示意图，器身有温润青灰釉色">
+              <div class="lab-points"></div>
+            </figure>
+            <aside class="lab-result" aria-live="polite">
+              <p>选择一个色点</p>
+              <h3>查看它来自器物的何处</h3>
+              <span>已发现 <b data-found-count>0 / 0</b> 色</span>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="collected-colors-section" id="my-colors" aria-labelledby="picked-title">
+        <div class="section-title reveal reveal-up">
+          <span class="section-title__index">MY COLOR PICKS</span>
+          <h2 id="picked-title">我的拾色</h2>
+          <p>把在器物中发现的颜色带走一小段。</p>
+        </div>
+        <div class="picked-colors" aria-live="polite"></div>
+      </section>
+
+      <section class="artifacts-closing" aria-labelledby="artifacts-closing-title">
+        <div class="artifacts-closing__copy reveal reveal-up">
+          <h2 id="artifacts-closing-title">器物会老去，<br>颜色却仍在被看见。</h2>
+          <p>釉色随火而生，衣色随丝线流转，丹青停在纸绢，朱砂留在宫墙。颜色依附于物，也因此穿越了时间。</p>
+        </div>
+        <a class="next-hall" href="seasons.html" data-transition-color="#9EAD8D" data-cursor-text="入展">
+          <span>下一展厅</span>
+          <strong>岁时流转</strong>
+          <small>COLORS OF THE 24 SOLAR TERMS</small>
+          <b>循四时观色 →</b>
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__top">
+        <div>
+          <strong>中国色彩数字博物馆</strong>
+          <span>CHINESE COLOR DIGITAL MUSEUM</span>
+        </div>
+        <nav aria-label="页脚导航">
+          <a href="../index.html" data-transition-color="#55766f">序厅</a>
+          <a href="origins.html" data-transition-color="#344943">正色溯源</a>
+          <a href="artifacts.html" data-transition-color="#829b97">物色生香</a>
+          <a href="seasons.html" data-transition-color="#9EAD8D">岁时流转</a>
+          <a href="archive.html" data-transition-color="#963c34">拾色藏库</a>
+        </nav>
+        <p>见物<br>寻色</p>
+      </div>
+      <div class="site-footer__bottom">
+        <span>由器物走向四时</span>
+        <i aria-hidden="true">色</i>
+      </div>
+    </footer>
+
+    <div class="artifact-dialog" role="dialog" aria-modal="true" aria-labelledby="artifact-dialog-title" aria-hidden="true">
+      <button class="artifact-dialog__close" type="button" aria-label="关闭文物探索器">收起</button>
+      <div class="artifact-dialog__image">
+        <img src="../assets/artifacts/ceramic-celadon.png" alt="青瓷器物示意图，器身有温润青灰釉色">
+        <div class="dialog-points"></div>
+      </div>
+      <aside class="artifact-dialog__info">
+        <p data-dialog-category></p>
+        <h2 id="artifact-dialog-title"></h2>
+        <dl>
+          <div><dt>年代</dt><dd data-dialog-dynasty></dd></div>
+          <div><dt>材质</dt><dd data-dialog-material></dd></div>
+          <div><dt>工艺</dt><dd data-dialog-technique></dd></div>
+        </dl>
+        <p data-dialog-description></p>
+        <div class="dialog-color-detail"></div>
+      </aside>
+    </div>
+    <button class="artifact-dialog-backdrop" type="button" aria-label="关闭文物探索器"></button>
+
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <div id="page-transition" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"><span></span></div>
+
+    <script src="../data/colors.js"></script>
+    <script src="../data/artifacts.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/cursor.js"></script>
+    <script src="../js/scroll.js"></script>
+    <script src="../js/transition.js"></script>
+    <script src="../js/colors.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/artifacts.js"></script>
+  </body>
+</html>
