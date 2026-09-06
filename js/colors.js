@@ -4,18 +4,117 @@ function initHeroIntro() {
     mouseEnabled: false,
     reducedMotion: window.MuseumUtils.prefersReducedMotion
   };
-  const heroVideo = document.querySelector(".hero-video");
-  if (heroVideo) {
+  const heroVideos = Array.from(document.querySelectorAll(".hero-video"));
+  if (heroVideos.length) {
     const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     let enabled = !motionPreference.matches;
     let visible = false;
-    heroVideo.muted = true;
+    let activeVideoIndex = 0;
+    let frameRequestId = null;
+    let frameRequestVideo = null;
+    let blendTimeoutId = null;
+    let isBlending = false;
+    const loopBlendSeconds = 0.42;
+
+    heroVideos.forEach((video) => {
+      video.muted = true;
+      video.loop = false;
+    });
+
+    const getActiveVideo = () => heroVideos[activeVideoIndex];
+    const canPlay = () => enabled && visible && !document.hidden;
+
+    const clearLoopWatch = () => {
+      if (frameRequestId !== null && frameRequestVideo && "cancelVideoFrameCallback" in frameRequestVideo) {
+        frameRequestVideo.cancelVideoFrameCallback(frameRequestId);
+      }
+      frameRequestId = null;
+      frameRequestVideo = null;
+    };
+
+    const clearBlend = () => {
+      if (blendTimeoutId !== null) window.clearTimeout(blendTimeoutId);
+      blendTimeoutId = null;
+      isBlending = false;
+    };
+
+    const resetToActiveVideo = () => {
+      heroVideos.forEach((video, index) => {
+        video.classList.toggle("is-loop-active", index === activeVideoIndex);
+        if (index !== activeVideoIndex) {
+          video.pause();
+          video.currentTime = 0;
+        }
+      });
+    };
+
+    const beginLoopBlend = () => {
+      if (!canPlay() || isBlending) return;
+      const outgoingVideo = getActiveVideo();
+      const incomingIndex = (activeVideoIndex + 1) % heroVideos.length;
+      const incomingVideo = heroVideos[incomingIndex];
+      if (incomingVideo.readyState < HTMLMediaElement.HAVE_FUTURE_DATA) {
+        incomingVideo.addEventListener("canplay", beginLoopBlend, { once: true });
+        return;
+      }
+
+      isBlending = true;
+      incomingVideo.currentTime = 0;
+      incomingVideo.play().then(() => {
+        if (!canPlay()) {
+          isBlending = false;
+          return;
+        }
+        activeVideoIndex = incomingIndex;
+        incomingVideo.classList.add("is-loop-active");
+        outgoingVideo.classList.remove("is-loop-active");
+        blendTimeoutId = window.setTimeout(() => {
+          outgoingVideo.pause();
+          outgoingVideo.currentTime = 0;
+          blendTimeoutId = null;
+          isBlending = false;
+        }, loopBlendSeconds * 1000);
+        watchForLoop();
+      }).catch(() => {
+        isBlending = false;
+      });
+    };
+
+    const watchForLoop = () => {
+      clearLoopWatch();
+      const activeVideo = getActiveVideo();
+      const nextFrame = (_now, metadata) => {
+        if (!canPlay() || activeVideo !== getActiveVideo()) return;
+        if (metadata.mediaTime >= activeVideo.duration - loopBlendSeconds) {
+          beginLoopBlend();
+          return;
+        }
+        frameRequestVideo = activeVideo;
+        frameRequestId = activeVideo.requestVideoFrameCallback(nextFrame);
+      };
+
+      if ("requestVideoFrameCallback" in activeVideo && Number.isFinite(activeVideo.duration)) {
+        frameRequestVideo = activeVideo;
+        frameRequestId = activeVideo.requestVideoFrameCallback(nextFrame);
+      }
+    };
+
+    heroVideos.forEach((video) => {
+      video.addEventListener("timeupdate", () => {
+        if (video === getActiveVideo() && canPlay() && video.duration - video.currentTime <= loopBlendSeconds) {
+          beginLoopBlend();
+        }
+      });
+    });
 
     const syncPlayback = () => {
-      if (enabled && visible && !document.hidden) {
-        heroVideo.play().catch(() => {});
+      if (canPlay()) {
+        getActiveVideo().play().then(watchForLoop).catch(() => {});
       } else {
-        heroVideo.pause();
+        clearLoopWatch();
+        clearBlend();
+        heroVideos.forEach((video) => video.pause());
+        resetToActiveVideo();
       }
     };
     motionPreference.addEventListener("change", (event) => {
@@ -27,7 +126,7 @@ function initHeroIntro() {
       visible = entry.isIntersecting;
       syncPlayback();
     });
-    visibilityObserver.observe(heroVideo.closest(".hero-section"));
+    visibilityObserver.observe(heroVideos[0].closest(".hero-section"));
   }
   window.heroState = heroState;
   window.setTimeout(() => {

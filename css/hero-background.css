@@ -5,8 +5,13 @@
 }
 
 .home-page .hero-video {
-  opacity: 1;
   object-position: center;
+  opacity: 0;
+  transition: opacity 420ms linear;
+}
+
+.home-page .hero-video.is-loop-active {
+  opacity: 1;
 }
 
 .home-page .hero-section::before,

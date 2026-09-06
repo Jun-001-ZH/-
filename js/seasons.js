@@ -137,17 +137,14 @@
   function renderYearRing() {
     const root = document.querySelector(".year-ring");
     if (!root) return;
-    root.innerHTML = terms.map((term, index) => `
-      <i style="--term-color:${term.representativeColor.hex};--angle:${index * 15}deg;--dot-index:${index}" title="${term.name} ${term.representativeColor.name}"></i>
-    `).join("");
+    root.innerHTML = `<div class="year-ring__breath"><div class="year-ring__orbit">${terms.map((term, index) => `
+      <i style="--term-color:${term.representativeColor.hex};--angle:${index * 15}deg;--dot-index:${index}" title="${term.name} ${term.representativeColor.name}"><span></span></i>
+    `).join("")}</div></div>`;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          root.classList.add("is-visible");
-          observer.unobserve(root);
-        }
+        root.classList.toggle("is-visible", entry.isIntersecting);
       });
-    }, { threshold: 0.35 });
+    }, { threshold: 0 });
     observer.observe(root);
   }
 
