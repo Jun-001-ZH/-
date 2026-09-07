@@ -273,6 +273,16 @@
 }
 
 @media (max-width: 480px) {
+  .site-brand {
+    gap: 9px;
+  }
+
+  .site-brand img {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
   .site-brand span {
     font-size: 14px;
   }

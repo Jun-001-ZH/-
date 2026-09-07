@@ -26,13 +26,25 @@
 }
 
 .site-brand {
-  display: grid;
-  gap: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   min-height: 44px;
-  align-content: center;
   font-family: var(--serif);
   font-size: 16px;
   letter-spacing: 0.08em;
+}
+
+.site-brand img {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  object-fit: contain;
+}
+
+.site-brand__text {
+  display: grid;
+  gap: 1px;
 }
 
 .site-brand small {
