@@ -27,7 +27,6 @@
     prepareData();
     readParams();
     validateColorDatabase();
-    renderHeroSpines();
     renderHeroStats();
     renderSpectrum();
     renderFilters();
@@ -59,51 +58,6 @@
     });
   }
 
-  function renderHeroSpines() {
-    const root = document.querySelector("[data-archive-spines]");
-    const tip = document.querySelector("[data-spine-tip]");
-    if (!root) return;
-    const amount = heroSpineAmount();
-    root.dataset.amount = String(amount);
-    root.innerHTML = colors.slice(0, amount).map((color, index) => `
-      <button class="archive-spine" type="button" style="--spine-color:${color.hex};--spine-width:${8 + (index % 6) * 4}px;--spine-height:${24 + ((index * 17) % 48)}vh;--spine-delay:${index * 28}ms" data-color-id="${color.id}" data-cursor-text="拾色" data-cursor-color="${color.hex}" aria-label="${color.name} ${color.hex}"></button>
-    `).join("");
-    if (!root.dataset.heroBound) {
-      root.dataset.heroBound = "true";
-      root.addEventListener("pointerover", (event) => {
-        const spine = event.target.closest(".archive-spine");
-        if (!spine || !tip) return;
-        const color = findColor(spine.dataset.colorId);
-        tip.innerHTML = `<strong>${color.name}</strong><br><span>${color.hex}</span>`;
-        tip.classList.add("is-visible");
-      });
-      root.addEventListener("pointermove", (event) => {
-        if (!tip) return;
-        tip.style.left = `${event.clientX + 18}px`;
-        tip.style.top = `${event.clientY + 18}px`;
-      }, { passive: true });
-      root.addEventListener("pointerleave", () => tip?.classList.remove("is-visible"));
-      root.addEventListener("click", (event) => {
-        const spine = event.target.closest(".archive-spine");
-        if (spine) jumpToColor(spine.dataset.colorId, true);
-      });
-    }
-    if (!root.dataset.resizeBound) {
-      root.dataset.resizeBound = "true";
-      window.addEventListener("resize", debounce(() => {
-        const nextAmount = heroSpineAmount();
-        if (root.dataset.amount !== String(nextAmount)) renderHeroSpines();
-      }, 180));
-    }
-  }
-
-  function heroSpineAmount() {
-    if (window.matchMedia("(max-width: 620px)").matches) return 34;
-    if (window.matchMedia("(max-width: 900px)").matches) return 46;
-    if (window.matchMedia("(max-width: 1180px)").matches) return 58;
-    return 72;
-  }
-
   function renderHeroStats() {
     setCount("total", colors.length);
     setCount("families", unique(colors.map((color) => color.family)).length);
@@ -133,7 +87,7 @@
     if (!root) return;
     const sorted = [...colors].sort((a, b) => familyOrder.indexOf(a.family) - familyOrder.indexOf(b.family) || a.hue - b.hue);
     root.innerHTML = sorted.map((color, index) => `
-      <button type="button" style="--color:${color.hex};--spectrum-ink:${isLight(color.hex) ? "#202321" : "#eee9dd"};--spectrum-height:${72 + ((index * 11) % 28)}%" data-color-id="${color.id}" data-cursor-text="探色" data-cursor-color="${color.hex}" aria-label="${color.name} ${color.pinyin} ${color.hex}">
+      <button type="button" style="background-color:${color.hex};--color:${color.hex};--spectrum-ink:${isLight(color.hex) ? "#202321" : "#eee9dd"};--spectrum-height:${72 + ((index * 11) % 28)}%" data-color-id="${color.id}" data-cursor-text="探色" data-cursor-color="${color.hex}" aria-label="${color.name} ${color.pinyin} ${color.hex}">
         <span><b>${color.name}</b><small>${color.pinyin}</small><small>${color.family}系 · ${color.hex}</small></span>
       </button>
     `).join("");
@@ -277,10 +231,11 @@
       article.className = "archive-color-card";
       article.id = `color-${color.id}`;
       article.style.setProperty("--color", color.hex);
+      article.style.borderColor = color.hex;
       article.style.animationDelay = `${Math.min(index * 18, 360)}ms`;
       article.innerHTML = `
         <button class="archive-color-card__open" type="button" data-open-color="${color.id}" data-cursor-text="探色" data-cursor-color="${color.hex}">
-          <div class="archive-color-card__swatch" data-code="${color.archiveId}" style="--swatch-ink:${isLight(color.hex) ? "#202321" : "#eee9dd"}"></div>
+          <div class="archive-color-card__swatch" data-code="${color.archiveId}" style="background-color:${color.hex};color:${isLight(color.hex) ? "#202321" : "#eee9dd"};--swatch-ink:${isLight(color.hex) ? "#202321" : "#eee9dd"}"></div>
           <div class="archive-color-card__content">
             <h3>${color.name}</h3>
             <span>${color.pinyin}</span>
@@ -424,7 +379,7 @@
   function relatedButton(id) {
     const color = findColor(id);
     if (!color) return "";
-    return `<button type="button" data-related-color="${color.id}"><i style="--color:${color.hex}"></i><span>${color.name}</span><small>${color.hex}</small></button>`;
+    return `<button type="button" data-related-color="${color.id}"><i style="background-color:${color.hex};--color:${color.hex}"></i><span>${color.name}</span><small>${color.hex}</small></button>`;
   }
 
   function closeDrawer() {
@@ -506,12 +461,12 @@
     }
     root.innerHTML = `
       <div class="picked-rack">${collection.map((item) => `
-        <article style="--picked-color:${item.hex};--picked-ink:${isLight(item.hex) ? "#202321" : "#eee9dd"}" tabindex="0">
+        <article style="background-color:${item.hex};--picked-color:${item.hex};--picked-ink:${isLight(item.hex) ? "#202321" : "#eee9dd"}" tabindex="0">
           <strong>${item.name}</strong><small>${item.hex}</small><em>来自 ${item.hall || item.sourceName || "展厅"}</em>
           <div><button type="button" data-copy-value="${item.hex}">复制</button><button type="button" data-remove-pick="${item.key || ""}" data-remove-color-id="${item.colorId || ""}" data-remove-hex="${item.hex}">移除</button></div>
         </article>
       `).join("")}</div>
-      ${collection.length >= 3 ? `<div class="picked-preview"><div class="picked-preview__bar">${collection.map((item) => `<i style="--color:${item.hex}"></i>`).join("")}</div><button class="line-button" type="button" data-copy-picked>复制全部 HEX <span>→</span></button></div>` : ""}
+      ${collection.length >= 3 ? `<div class="picked-preview"><div class="picked-preview__bar">${collection.map((item) => `<i style="background-color:${item.hex};--color:${item.hex}"></i>`).join("")}</div><button class="line-button" type="button" data-copy-picked>复制全部 HEX <span>→</span></button></div>` : ""}
     `;
     root.querySelectorAll("[data-copy-value]").forEach((button) => button.addEventListener("click", () => copyValue(button.dataset.copyValue, button)));
     root.querySelectorAll("[data-remove-pick]").forEach((button) => {
@@ -557,7 +512,7 @@
       return `
         <article class="palette-scroll reveal reveal-up">
           <div class="palette-visual">
-            <div class="palette-bar">${resolved.map((entry) => `<button type="button" style="--color:${entry.color.hex};--ratio:${entry.ratio};--ink-on-color:${isLight(entry.color.hex) ? "#202321" : "#eee9dd"}" data-copy-value="${entry.color.hex}"><span>${entry.color.name}<br>${entry.color.hex}</span></button>`).join("")}</div>
+            <div class="palette-bar">${resolved.map((entry) => `<button type="button" style="background-color:${entry.color.hex};--color:${entry.color.hex};--ratio:${entry.ratio};--ink-on-color:${isLight(entry.color.hex) ? "#202321" : "#eee9dd"}" data-copy-value="${entry.color.hex}"><span>${entry.color.name}<br>${entry.color.hex}</span></button>`).join("")}</div>
             <div class="palette-ratios">${resolved.map((entry) => `<span>${entry.color.name} ${entry.ratio}%</span>`).join("")}</div>
           </div>
           <div class="palette-copy-content">
@@ -580,7 +535,7 @@
     root.innerHTML = `
       <div class="composer-selected">
         <h3>当前配色</h3>
-        <div class="composer-preview">${selected.map((color) => `<i style="--color:${color.hex}"></i>`).join("")}</div>
+        <div class="composer-preview">${selected.map((color) => `<i style="background-color:${color.hex};--color:${color.hex}"></i>`).join("")}</div>
         <div class="composer-slots">${[0, 1, 2, 3, 4].map((index) => slotHtml(selected[index], index)).join("")}</div>
       </div>
       <div class="composer-actions">
@@ -617,11 +572,11 @@
 
   function slotHtml(color, index) {
     if (!color) return `<button class="composer-slot is-empty" type="button" data-open-composer-picker="${index}">待选<br><small>${index + 1} / 5</small></button>`;
-    return `<button class="composer-slot" type="button" style="--color:${color.hex};--chip-ink:${isLight(color.hex) ? "#202321" : "#eee9dd"}" data-remove-slot="${index}">${color.name}<small>${color.hex}</small></button>`;
+    return `<button class="composer-slot" type="button" style="background-color:${color.hex};--color:${color.hex};--chip-ink:${isLight(color.hex) ? "#202321" : "#eee9dd"}" data-remove-slot="${index}">${color.name}<small>${color.hex}</small></button>`;
   }
 
   function chipHtml(color) {
-    return `<button class="composer-chip" type="button" style="--color:${color.hex};--chip-ink:${isLight(color.hex) ? "#202321" : "#eee9dd"}" data-add-composer="${color.id}">${color.name}<small>${color.hex}</small></button>`;
+    return `<button class="composer-chip" type="button" style="background-color:${color.hex};--color:${color.hex};--chip-ink:${isLight(color.hex) ? "#202321" : "#eee9dd"}" data-add-composer="${color.id}">${color.name}<small>${color.hex}</small></button>`;
   }
 
   function addComposer(id) {
@@ -693,7 +648,7 @@
     }
     panel.innerHTML = source.map((color) => `
       <button type="button" style="--color:${color.hex};--chip-ink:${isLight(color.hex) ? "#202321" : "#eee9dd"}" data-pick-composer-color="${color.id}">
-        <i></i><span>${color.name}</span><small>${color.hex}</small>
+        <i style="background-color:${color.hex};--color:${color.hex}"></i><span>${color.name}</span><small>${color.hex}</small>
       </button>
     `).join("");
   }
@@ -725,7 +680,7 @@
     return saved.map((palette) => {
       const resolved = palette.colors.map(findColor).filter(Boolean);
       const hexList = resolved.map((color) => color.hex).join(", ");
-      return `<article><div><strong>${palette.name}</strong><div class="picked-preview__bar">${resolved.map((color) => `<i style="--color:${color.hex}"></i>`).join("")}</div></div><div class="composer-saved__actions"><button type="button" data-copy-saved-palette="${hexList}">复制当前 HEX</button><button type="button" data-delete-palette="${palette.id}">删除</button></div></article>`;
+      return `<article><div><strong>${palette.name}</strong><div class="picked-preview__bar">${resolved.map((color) => `<i style="background-color:${color.hex};--color:${color.hex}"></i>`).join("")}</div></div><div class="composer-saved__actions"><button type="button" data-copy-saved-palette="${hexList}">复制当前 HEX</button><button type="button" data-delete-palette="${palette.id}">删除</button></div></article>`;
     }).join("");
   }
 
@@ -775,7 +730,7 @@
 
   function panelHtml(title, rows) {
     const max = Math.max(...rows.map((row) => row.count), 1);
-    return `<article class="observation-panel"><h3>${title}</h3>${rows.map((row, index) => `<div class="observation-row"><span>${row.key}</span><i style="--amount:${row.count / max};--color:${familyColor(row.key)};--row-index:${index}"></i><b>${row.count}</b></div>`).join("")}</article>`;
+    return `<article class="observation-panel"><h3>${title}</h3>${rows.map((row, index) => `<div class="observation-row"><span>${row.key}</span><i style="background-color:${familyColor(row.key)};--amount:${row.count / max};--color:${familyColor(row.key)};--row-index:${index}"></i><b>${row.count}</b></div>`).join("")}</article>`;
   }
 
   function initClosingLinks() {

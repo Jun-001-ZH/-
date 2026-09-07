@@ -1,0 +1,96 @@
+{
+  "input": "C:\\Users\\HUAWEI\\Documents\\xwechat_files\\wxid_wisnwe00gep312_e50a\\msg\\file\\2026-09\\\u9644\u4ef62\uff1a2026\u5e74\u5b89\u5fbd\u7701AI\u5927\u6a21\u578b\u521b\u65b0\u5e94\u7528\u7ade\u8d5b\u4f5c\u54c1\u8d5b\u7ade\u8d5b\u6a21\u677f.docx",
+  "fonts_by_char_count": {
+    "\u5b8b\u4f53": 408,
+    "\u65b9\u6b63\u9ed1\u4f53_GBK": 3
+  },
+  "direct_run_formatting_runs": 63,
+  "direct_paragraph_formatting_paragraphs": 32,
+  "heading_like_paragraphs_not_heading_style": [
+    {
+      "para_index": 33,
+      "text": "\u4f5c\u54c1\u7b80\u4ecb",
+      "style": "Normal"
+    },
+    {
+      "para_index": 36,
+      "text": "\u6b63\u6587",
+      "style": "Normal"
+    },
+    {
+      "para_index": 38,
+      "text": "\u9009\u9898\u5b9a\u4f4d",
+      "style": "List Paragraph"
+    },
+    {
+      "para_index": 41,
+      "text": "\u793e\u4f1a\u4ef7\u503c",
+      "style": "List Paragraph"
+    },
+    {
+      "para_index": 44,
+      "text": "\u6280\u672f\u65b9\u6848",
+      "style": "List Paragraph"
+    }
+  ],
+  "examples": {
+    "direct_paragraph_formatting": [
+      {
+        "para_index": 1,
+        "text": "\u9644\u4ef64",
+        "style": "Normal"
+      },
+      {
+        "para_index": 3,
+        "text": "",
+        "style": "Heading 1"
+      },
+      {
+        "para_index": 6,
+        "text": "",
+        "style": "Normal"
+      },
+      {
+        "para_index": 7,
+        "text": "",
+        "style": "Normal"
+      },
+      {
+        "para_index": 8,
+        "text": "",
+        "style": "Normal"
+      }
+    ],
+    "direct_run_formatting": [
+      {
+        "para_index": 1,
+        "run_text": "\u9644\u4ef6",
+        "style": "Normal"
+      },
+      {
+        "para_index": 1,
+        "run_text": "4",
+        "style": "Normal"
+      },
+      {
+        "para_index": 4,
+        "run_text": "202",
+        "style": "Heading 1"
+      },
+      {
+        "para_index": 4,
+        "run_text": "6",
+        "style": "Heading 1"
+      },
+      {
+        "para_index": 4,
+        "run_text": "\u5e74\u5b89\u5fbd\u7701",
+        "style": "Heading 1"
+      }
+    ]
+  },
+  "notes": [
+    "Direct formatting is not always wrong, but it often causes inconsistent output when templates change.",
+    "Heading-like paragraphs not using Heading styles can break TOC and accessibility."
+  ]
+}
