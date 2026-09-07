@@ -234,7 +234,7 @@
       article.style.borderColor = color.hex;
       article.style.animationDelay = `${Math.min(index * 18, 360)}ms`;
       article.innerHTML = `
-        <button class="archive-color-card__open" type="button" data-open-color="${color.id}" data-cursor-text="探色" data-cursor-color="${color.hex}">
+        <button class="archive-color-card__open" type="button" style="background:${cardBackground(color.hex)};--color:${color.hex}" data-open-color="${color.id}" data-cursor-text="探色" data-cursor-color="${color.hex}">
           <div class="archive-color-card__swatch" data-code="${color.archiveId}" style="background-color:${color.hex};color:${isLight(color.hex) ? "#202321" : "#eee9dd"};--swatch-ink:${isLight(color.hex) ? "#202321" : "#eee9dd"}"></div>
           <div class="archive-color-card__content">
             <h3>${color.name}</h3>
@@ -268,6 +268,10 @@
     if (width <= 768) return 6;
     if (width <= 1180) return 9;
     return 12;
+  }
+
+  function cardBackground(hex) {
+    return `linear-gradient(to bottom, ${hex} 0%, ${hex} 48%, rgba(243, 240, 232, 0.96) 48%, rgba(243, 240, 232, 0.96) 100%)`;
   }
 
   function renderActiveFilters() {

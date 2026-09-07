@@ -659,12 +659,14 @@
 
 .archive-color-card__open {
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: minmax(46%, 1fr) auto;
   width: 100%;
+  min-height: 360px;
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border: 1px solid var(--archive-line);
-  background: rgba(243, 240, 232, 0.2);
+  background:
+    linear-gradient(to bottom, var(--color, #8ba59b) 0 48%, rgba(243, 240, 232, 0.96) 48% 100%);
   text-align: left;
   transition: transform 260ms var(--ease-out), border-color 260ms var(--ease-out);
 }
@@ -677,7 +679,8 @@
 
 .archive-color-card__swatch {
   position: relative;
-  min-height: 0;
+  min-height: 170px;
+  height: 100%;
   background-color: var(--color, #8ba59b);
   background: var(--color);
 }
